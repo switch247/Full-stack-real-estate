@@ -4,9 +4,9 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { userRoute } from './routes/userRoute.js';
 import { residencyRoute } from './routes/residencyRoute.js';
-const mongoose = require("mongoose")
-const multer = require("multer");
-const path = require("path");
+// import mongoose from "mongoose"
+// const multer = require("multer");
+// const path = require("path");
 
 
 dotenv.config()

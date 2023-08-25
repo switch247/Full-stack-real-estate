@@ -1,20 +1,47 @@
-import asyncHandler from "express-async-handler";
+import asyncHandler from 'express-async-handler';
 
-import { prisma } from "../config/prismaConfig.js";
+import { prisma } from '../config/prismaConfig.js';
 
 export const createUser = asyncHandler(async (req, res) => {
-  console.log("creating a user");
+  console.log('creating a user');
 
   let { email } = req.body;
   const userExists = await prisma.user.findUnique({ where: { email: email } });
   if (!userExists) {
     const user = await prisma.user.create({ data: req.body });
     res.send({
-      message: "User registered successfully",
+      message: 'User registered successfully',
       user: user,
     });
-  } else res.status(201).send({ message: "User already registered" });
+  } else res.status(201).send({ message: 'User already registered' });
 });
+
+// export const updateUser = asyncHandler(async (req, res) => {
+//   console.log('updating a user');
+//   let { email, name, image } = req.body;
+//   try {
+//     const userExists = await prisma.user.findUnique({
+//       where: { email },
+//     });
+//     if (userExists) {
+//       const updateUser = await prisma.user.update({
+//         where: { email },
+//         data: {
+//           name: { set: name },
+//           image: { set: image },
+//         },
+//       });
+//       res.send({
+//         message: 'User updated successfully',
+//         user: updateUser,
+//       });
+//     } else {
+//       res.status(201).send({ message: 'User Not registered' });
+//     }
+//   } catch (e) {
+//     res.status(500).send(e);
+//   }
+// });
 
 // function to book a visit to resd
 export const bookVisit = asyncHandler(async (req, res) => {
@@ -22,6 +49,7 @@ export const bookVisit = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   try {
+    // list of all booked residencies
     const alreadyBooked = await prisma.user.findUnique({
       where: { email },
       select: { bookedVisits: true },
@@ -30,7 +58,7 @@ export const bookVisit = asyncHandler(async (req, res) => {
     if (alreadyBooked.bookedVisits.some((visit) => visit.id === id)) {
       res
         .status(400)
-        .json({ message: "This residency is already booked by you" });
+        .json({ message: 'This residency is already booked by you' });
     } else {
       await prisma.user.update({
         where: { email: email },
@@ -38,14 +66,14 @@ export const bookVisit = asyncHandler(async (req, res) => {
           bookedVisits: { push: { id, date } },
         },
       });
-      res.send("your visit is booked successfully");
+      res.send('your visit is booked successfully');
     }
   } catch (err) {
     throw new Error(err.message);
   }
 });
 
-// funtion to get all bookings of a user
+// function to get all bookings of a user
 export const getAllBookings = asyncHandler(async (req, res) => {
   const { email } = req.body;
   try {
@@ -72,7 +100,7 @@ export const cancelBooking = asyncHandler(async (req, res) => {
     const index = user.bookedVisits.findIndex((visit) => visit.id === id);
 
     if (index === -1) {
-      res.status(404).json({ message: "Booking not found" });
+      res.status(404).json({ message: 'Booking not found' });
     } else {
       user.bookedVisits.splice(index, 1);
       await prisma.user.update({
@@ -82,7 +110,7 @@ export const cancelBooking = asyncHandler(async (req, res) => {
         },
       });
 
-      res.send("Booking cancelled successfully");
+      res.send('Booking cancelled successfully');
     }
   } catch (err) {
     throw new Error(err.message);
@@ -100,6 +128,7 @@ export const toFav = asyncHandler(async (req, res) => {
     });
 
     if (user.favResidenciesID.includes(rid)) {
+      // remove fav if exists
       const updateUser = await prisma.user.update({
         where: { email },
         data: {
@@ -109,7 +138,7 @@ export const toFav = asyncHandler(async (req, res) => {
         },
       });
 
-      res.send({ message: "Removed from favorites", user: updateUser });
+      res.send({ message: 'Removed from favorites', user: updateUser });
     } else {
       const updateUser = await prisma.user.update({
         where: { email },
@@ -119,7 +148,7 @@ export const toFav = asyncHandler(async (req, res) => {
           },
         },
       });
-      res.send({ message: "Updated favorites", user: updateUser });
+      res.send({ message: 'Updated favorites', user: updateUser });
     }
   } catch (err) {
     throw new Error(err.message);
