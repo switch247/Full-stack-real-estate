@@ -4,13 +4,15 @@
   top: 0;
 }
 .h-container {
+  background-color:  var(--secondary);
   padding-top: 1rem;
   padding-bottom: 1rem;
-  color: var(--secondary);
+  color: var(--black);
   justify-content: space-between;
 }
 
 .h-menu {
+ 
   gap: 2rem;
 }
 .h-menu > *:hover {

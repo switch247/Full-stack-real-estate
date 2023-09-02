@@ -3,7 +3,7 @@ import {
   bookVisit,
   cancelBooking,
   createUser,
-  // updateUser,
+  updateUser,
   getAllBookings,
   getAllFavorites,
   toFav,
@@ -12,7 +12,7 @@ import jwtCheck from "../config/auth0Config.js";
 const router = express.Router();
 
 router.post("/register", createUser);
-// router.post("/update", jwtCheck, updateUser);
+router.post("/update", updateUser);
 router.post("/bookVisit/:id", jwtCheck, bookVisit);
 router.post("/allBookings", getAllBookings);
 router.post("/removeBooking/:id", jwtCheck, cancelBooking);

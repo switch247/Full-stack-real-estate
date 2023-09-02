@@ -8,7 +8,7 @@ export const createResidency = asyncHandler(async (req, res) => {
     description,
     price,
     address,
-    country,
+    // country,
     // default Ethiopia
     city,
     facilities,

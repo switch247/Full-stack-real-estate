@@ -10,7 +10,6 @@ footer {
   background-color: #1d2636;
   padding: 50px 0;
   color: #fff;
- 
 }
 footer .container {
   display: grid;
@@ -45,13 +44,6 @@ footer ul li {
   color: grey;
   margin-bottom: 20px;
 }
-footer ul li a{
-  text-decoration: none;
-  display: block;
-  color: grey;
-  margin-bottom: 20px;
-}
-
 .legal {
   text-align: center;
   padding: 20px;
@@ -62,11 +54,5 @@ footer ul li a{
 @media screen and (max-width: 800px) {
   footer .container {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 500px) {
-  footer .container {
-    grid-template-columns: repeat(1, 1fr);
   }
 }
