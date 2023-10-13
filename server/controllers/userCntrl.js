@@ -13,7 +13,8 @@ export const createUser = asyncHandler(async (req, res) => {
       message: 'User registered successfully',
       user: user,
     });
-  } else res.status(201).send({ message: 'User already registered' });
+  }
+   else res.status(201).send({ message: 'User already registered' });
 });
 
 // export const updateUser = asyncHandler(async (req, res) => {

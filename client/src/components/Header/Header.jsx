@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { BiMenuAltRight } from "react-icons/bi";
 import { getMenuStyles } from "../../utils/common";
@@ -23,6 +23,13 @@ const Header = () => {
       setModalOpened(true);
     }
   };
+useEffect(()=>{
+  setMenuOpened(false);
+
+},[])
+
+
+
   return (
     <section className="h-wrapper" style={{ background: headerColor }}>
       <div className="flexCenter innerWidth paddings h-container">

@@ -1,16 +1,27 @@
 .h-wrapper {
+  width: 100vw;
+  min-width: 100%;
+
   z-index: 99;
   position: sticky;
   top: 0;
 }
 .h-container {
-  background-color:  var(--secondary);
+
+  width: 100vw;
+  min-width: 100%;
+  min-height: 100%;
+    background: black;
+  /* background-color:  var(--secondary); */
   padding-top: 1rem;
   padding-bottom: 1rem;
-  color: var(--black);
+  color: var(--lightBlue);
   justify-content: space-between;
 }
+a{
+  color: var(--lightBlue);
 
+}
 .h-menu {
  
   gap: 2rem;
@@ -27,7 +38,7 @@
     display: block;
   }
   .h-menu {
-    color: var(--black);
+    color: var(--lightBlue);
     position: absolute;
     gap: 2rem;
     font-weight: 500;

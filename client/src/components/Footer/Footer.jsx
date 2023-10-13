@@ -33,12 +33,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {footer.map((val) => (
+          {footer.map((val,idx) => (
             <div className='box'>
               <h3>{val.title}</h3>
-              <ul>
-                {val.text.map((items) => (
-                  <li> <a href={items.list}>{items.list}  </a></li>
+              <ul key={idx}>
+                {val.text.map((items,index) => (
+                  <li key={index}> <a href={items.list}>{items.list}  </a></li>
                 ))}
               </ul>
             </div>

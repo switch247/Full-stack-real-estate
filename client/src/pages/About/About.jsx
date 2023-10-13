@@ -9,7 +9,6 @@ const About = () => {
     <>
     <div className="App">
 
-
       <section className='about wrapper'>
         <Back name='About Us' title='About Us - Who We Are?' cover={img} />
         <div className='container flex mtop'>

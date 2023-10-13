@@ -24,16 +24,24 @@ const Layout = () => {
 
   useEffect(() => {
     const getTokenAndRegsiter = async () => {
-
-      const res = await getAccessTokenWithPopup({
-        authorizationParams: {
-          audience: "http://localhost:8000",
-          scope: "openid profile email",
-        },
-      });
-      localStorage.setItem("access_token", res);
-      setUserDetails((prev) => ({ ...prev, token: res }));
-      mutate(res)
+try {
+  const res = await getAccessTokenWithPopup({
+    authorizationParams: {
+      audience: "http://localhost:8000",
+      scope: "openid profile email",
+    },
+  });
+  localStorage.setItem("access_token", res);
+  setUserDetails((prev) => ({ ...prev, token: res }));
+  console.log(res)
+  mutate(res)
+} catch (error) {
+  toast.error("error registering", {
+    position: "bottom-right",
+  });
+  // console.log(error)
+}
+      
     };
 
 
