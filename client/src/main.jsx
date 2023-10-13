@@ -13,9 +13,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     domain = "dev-z02ccb3xqm0xwakf.us.auth0.com"
     clientId = "vacZeXO12RUPWtp64TNLtKXTV248qx3t"
     authorizationParams={{
-      // redirect_uri: "https://full-stack-real-estate-youtube-sooty.vercel.app"
+      redirect_uri: "https://full-stack-real-estate-dusky.vercel.app/"
       // redirect_uri: "http://localhost:5173"
-      redirect_uri: window.location.origin
+      // redirect_uri: window.location.origin
       
     }}
      audience="http://localhost:8000"
