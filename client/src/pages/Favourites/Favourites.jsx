@@ -5,8 +5,12 @@ import { PuffLoader } from "react-spinners";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import "../Properties/Properties.css";
 import UserDetailContext from "../../context/UserDetailContext";
-
+import { useAuth0 } from '@auth0/auth0-react'
 const Favourites = () => {
+  const { isAuthenticated } = useAuth0()
+  useEffect(() => {
+    !isAuthenticated && window.location.replace('/')}
+    , []);
   const { data, isError, isLoading } = useProperties();
   const [filter, setFilter] = useState("");
   const {
@@ -34,13 +38,19 @@ const Favourites = () => {
       </div>
     );
   }
+
   const componentRef = useRef(null);
 
   useEffect(() => {
+    !isAuthenticated && window.location.replace('/')
     if (componentRef.current && componentRef.current.children.length === 0) {
+      const wElement = document.createElement('div');
+      wElement.setAttribute('class', 'wrapper flexCenter');
+      wElement.setAttribute.height='60vh';
       const emptyElement = document.createElement('p');
-      emptyElement.textContent = 'empty';
-      componentRef.current.appendChild(emptyElement);
+      emptyElement.textContent = 'no favorites';
+      wElement.appendChild(emptyElement);
+      componentRef.current.appendChild(wElement);
     }
   }, []);
   return (

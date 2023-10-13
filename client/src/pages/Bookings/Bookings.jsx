@@ -5,8 +5,12 @@ import { PuffLoader } from "react-spinners";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import "../Properties/Properties.css";
 import UserDetailContext from "../../context/UserDetailContext";
-
+import { useAuth0 } from '@auth0/auth0-react'
 const Bookings = () => {
+  const { isAuthenticated } = useAuth0()
+  useEffect(() => {
+    !isAuthenticated && window.location.replace('/')}
+    , []);
   const { data, isError, isLoading } = useProperties();
   const [filter, setFilter] = useState("");
   const {
@@ -34,12 +38,29 @@ const Bookings = () => {
       </div>
     );
   }
+
+  const componentRef = useRef(null);
+
+  useEffect(() => {
+    !isAuthenticated && window.location.replace('/')
+    if (componentRef.current && componentRef.current.children.length === 0) {
+      const wElement = document.createElement('div');
+      wElement.setAttribute('class', 'wrapper flexCenter');
+      wElement.setAttribute.height='60vh';
+      const emptyElement = document.createElement('p');
+      emptyElement.textContent = 'no Bookings';
+      wElement.appendChild(emptyElement);
+      componentRef.current.appendChild(wElement);
+    }
+  }, []);
+
+
   return (
     <div className="wrapper">
       <div className="flexColCenter paddings innerWidth properties-container">
         <SearchBar filter={filter} setFilter={setFilter} />
 
-        <div className="paddings flexCenter properties">
+        <div id="bookings"  ref={componentRef} className="paddings flexCenter properties">
           {
             // data.map((card, i)=> (<PropertyCard card={card} key={i}/>))
 

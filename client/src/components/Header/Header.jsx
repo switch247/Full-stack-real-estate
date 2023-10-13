@@ -23,10 +23,10 @@ const Header = () => {
       setModalOpened(true);
     }
   };
-useEffect(()=>{
-  setMenuOpened(false);
+  useEffect(() => {
+    setMenuOpened(false);
 
-},[])
+  }, [])
 
 
 
@@ -53,7 +53,7 @@ useEffect(()=>{
 
             <NavLink to="/about">About</NavLink>
             {/* <NavLink to="/contactus">Contact Us</NavLink> */}
-            
+
             <a href="mailto:abelbeworking245@gmail.com">Contact</a>
 
             {/* add property */}
