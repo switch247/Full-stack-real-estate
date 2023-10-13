@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react"; 
 import SearchBar from "../../components/SearchBar/SearchBar";
 import useProperties from "../../hooks/useProperties";
 import { PuffLoader } from "react-spinners";
@@ -34,12 +34,21 @@ const Favourites = () => {
       </div>
     );
   }
+  const componentRef = useRef(null);
+
+  useEffect(() => {
+    if (componentRef.current && componentRef.current.children.length === 0) {
+      const emptyElement = document.createElement('p');
+      emptyElement.textContent = 'empty';
+      componentRef.current.appendChild(emptyElement);
+    }
+  }, []);
   return (
     <div className="wrapper">
       <div className="flexColCenter paddings innerWidth properties-container">
         <SearchBar filter={filter} setFilter={setFilter} />
 
-        <div className="paddings flexCenter properties">
+        <div id="favs"  ref={componentRef} className="paddings flexCenter properties">
           {
             // data.map((card, i)=> (<PropertyCard card={card} key={i}/>))
 
