@@ -36,6 +36,9 @@ try {
   setUserDetails((prev) => ({ ...prev, token: res }));
   console.log(res)
   mutate(res)
+  toast.success("registered", {
+    position: "bottom-right",
+  });
 } catch (error) {
   toast.error("error registering", {
     position: "bottom-right",
