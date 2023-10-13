@@ -29,7 +29,7 @@ This is a full-stack real estate application built with React.js, Prisma, Expres
 
 ## Live Demo
 
-A live demo of the app can be found [here](https://full-stack-real-estate-dusky.vercel.app/).
+A live demo of the app can be found [here](https://full-stack-real-estate-dusky.vercel.app).
 
 ## Getting Started
 
