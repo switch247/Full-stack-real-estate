@@ -1,7 +1,6 @@
-import React from "react"
-import { footer } from "../../data/Data"
-import "./footer.css"
-
+import React from "react";
+import { footer } from "../../data/Data";
+import "./Footer.css";
 const Footer = () => {
   return (
     <>
