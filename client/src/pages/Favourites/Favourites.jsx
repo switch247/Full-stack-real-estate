@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react"; 
+import React, { useContext, useRef, useState, useEffect } from "react"; 
 import SearchBar from "../../components/SearchBar/SearchBar";
 import useProperties from "../../hooks/useProperties";
 import { PuffLoader } from "react-spinners";

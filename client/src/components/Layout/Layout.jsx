@@ -36,11 +36,11 @@ try {
   setUserDetails((prev) => ({ ...prev, token: res }));
   console.log(res)
   mutate(res)
-  toast.success("registered", {
+  toast.success("synced", {
     position: "bottom-right",
   });
 } catch (error) {
-  toast.error("error registering", {
+  toast.error("sync failed", {
     position: "bottom-right",
   });
   // console.log(error)
