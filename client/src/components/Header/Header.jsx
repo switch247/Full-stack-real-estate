@@ -52,9 +52,9 @@ useEffect(()=>{
             <NavLink to="/properties">Properties</NavLink>
 
             <NavLink to="/about">About</NavLink>
-            <NavLink to="/contactus">Contact Us</NavLink>
+            {/* <NavLink to="/contactus">Contact Us</NavLink> */}
             
-            {/* <a href="mailto:abelbeworking245@gmail.com">Contact</a> */}
+            <a href="mailto:abelbeworking245@gmail.com">Contact</a>
 
             {/* add property */}
             <div onClick={handleAddPropertyClick}>Add Property</div>
