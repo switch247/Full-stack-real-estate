@@ -47,7 +47,8 @@ const Footer = () => {
       </footer>
 
       <div className='legal'>
-        <span>© 2023 RealUP. Designd By GorkCoder updated by abel(switch247).</span>
+        <span>© 2023 RealUP.</span>
+        {/*  Designd By GorkCoder updated by abel(switch247). */}
       </div>
     </>
   )
